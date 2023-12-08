@@ -3,7 +3,7 @@ import Body from "./body";
 
 const Header = () => {
   return (
-    <div>
+    <div className="bg-[url('/images/poster.png')] bg-no-repeat bg-contain h-[37.5rem] md:bg-cover">
       <Nav />
       <Body />
     </div>
