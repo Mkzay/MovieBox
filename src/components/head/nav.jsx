@@ -1,6 +1,6 @@
 const Nav = () => {
   return (
-    <div className="flex items-center justify-between py-5 px-2 md:py-10 md:px-20">
+    <div className="flex items-center justify-between py-7 px-2 md:py-10 md:px-20">
       <logo className="flex items-center gap-2 md:gap-6">
         <img src="images/tv.png" alt="tv-logo" />
         <h2 className="text-white text-2xl/[1.5rem] font-bold">MovieBox</h2>
