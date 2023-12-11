@@ -7,7 +7,7 @@ const Body = ({ movieItems }) => {
   };
 
   return (
-    <main className="flex items-center justify-center flex-col gap-11 py-5 px-2 mb-16 md:mb-20 md:py-10 md:px-20">
+    <main className="flex items-center justify-center flex-col py-5 px-2 mb-10 md:mb-20 md:py-10 md:px-20">
       <section className="flex items-center justify-between w-full">
         <h2 className="text-xl md:text-4xl/normal font-bold">
           Featured Movies
@@ -32,7 +32,7 @@ const Body = ({ movieItems }) => {
           } = movieItem;
           return (
             <article key={id}>
-              <div className="flex flex-col gap-3 w-[15.625rem] h-[30.625rem] relative">
+              <div className="flex flex-col gap-3 w-[19rem] h-[35rem] relative md:w-[15rem] md:h-[30rem]">
                 <div className="flex items-center justify-between relative top-14 px-4">
                   <p className="text-gray-900 text-xs/normal font-bold bg-[#F3F4F680] backdrop-blur-[1px] px-2 rounded-2xl">
                     {tvSeries ? "TV SERIES" : ""}
@@ -49,7 +49,11 @@ const Body = ({ movieItems }) => {
                     )}
                   </button>
                 </div>
-                <img src="images/poster1.png" alt={alt} />
+                <img
+                  src="images/poster1.png"
+                  alt={alt}
+                  className="rounded-2xl w-full"
+                />
                 <p className="text-gray-400 text-xs/normal font-bold">
                   {country}, {runtime}
                 </p>
@@ -73,13 +77,6 @@ const Body = ({ movieItems }) => {
             </article>
           );
         })}
-        <button
-          onClick={onHeart}
-          className="text-rose-700 text-lg/6 font-normal flex items-center gap-2 mt-24"
-        >
-          See more
-          <img src="images/arrowRight.svg" alt="arrowRight-icon" />
-        </button>
       </section>
     </main>
   );
