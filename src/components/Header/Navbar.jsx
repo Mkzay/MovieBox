@@ -35,7 +35,7 @@ const Nav = () => {
           <img src="images/menu.svg" alt="menu-logo" />
         </button>
         <section
-          className={`flex flex-col bg-white items-center justify-center gap-20 p-10 pl-5 border border-gray-500 rounded-r-[2.8125rem] z-10 absolute top-0 left-0 h-[83.7%] md:p-10 md:h-[89.7%] md:gap-24 ${
+          className={`flex flex-col bg-white items-center justify-center gap-20 p-10 pl-5 border border-gray-500 rounded-r-[2.8125rem] z-10 absolute top-0 left-0 h-[90%] md:p-10 md:h-[89.7%] md:gap-24 ${
             isSideBarOpen
               ? "translate-x-0 duration-1000 ease-in delay-75 scale 75 shadow-lg shadow-gray-500"
               : "-translate-x-[100%] duration-1000 ease-out delay-100 scale-50"
