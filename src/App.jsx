@@ -1,7 +1,9 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Header from "./components/head/header";
-import Body from "./components/body/body";
-import Footer from "./components/footer/footer";
+import Home from "./Pages/Home/Home";
+import Movies from "./Pages/Movies/Movies";
+import TvSeries from "./Pages/TvSeries/TvSeries";
+import Upcoming from "./Pages/Upcoming/Upcoming";
 
 export default function App() {
   const [movieItems, setMovieItems] = useState([]);
@@ -30,9 +32,14 @@ export default function App() {
 
   return (
     <div className="font-dm-sans">
-      <Header movieItems={movieItems} />
-      <Body movieItems={movieItems} />
-      <Footer />
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Home movieItems={movieItems} />} />
+          <Route exact path="/Movies" element={<Movies />} />
+          <Route exact path="/TvSeries" element={<TvSeries />} />
+          <Route exact path="/Upcoming" element={<Upcoming />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

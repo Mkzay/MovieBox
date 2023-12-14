@@ -1,4 +1,4 @@
-const Body = ({ top10Movies }) => {
+const Main = () => {
   return (
     <article className="flex items-center justify-between flex-col gap-10 p-5 md:flex-row md:py-10 md:px-20">
       <section className="flex flex-col justify-center md:justify-start gap-5 md:gap-4 text-white">
@@ -63,4 +63,4 @@ const Body = ({ top10Movies }) => {
   );
 };
 
-export default Body;
+export default Main;

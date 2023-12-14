@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 
-const Body = ({ movieItems }) => {
+const Featured = ({ movieItems }) => {
   const [heart, setHeart] = useState(true);
   const [displayedMovies, setDisplayedMovies] = useState(8); // Initially display 6 movies
 
@@ -33,7 +34,6 @@ const Body = ({ movieItems }) => {
             poster_path,
             vote_average,
             release_date,
-            genre,
             // Include other necessary fields from your API response
           } = movieItem;
 
@@ -68,7 +68,7 @@ const Body = ({ movieItems }) => {
                   <p className="text-xs/3 font-normal">{vote_average}</p>
                 </div>
                 <p className="text-gray-400 text-xs/normal font-bold">
-                  {releaseYear}, {genre}
+                  {releaseYear}
                 </p>
               </div>
             </article>
@@ -79,4 +79,4 @@ const Body = ({ movieItems }) => {
   );
 };
 
-export default Body;
+export default Featured;

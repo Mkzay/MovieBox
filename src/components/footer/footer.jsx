@@ -9,7 +9,7 @@ const Footer = () => {
           <img src="images/instagram.svg" alt="instagram-logo" />
         </a>
         <a href="#">
-          <img src="images/twitter.svg" alt="x-logo" />
+          <img src="images/x.png" alt="x-logo" />
         </a>
         <a href="#">
           <img src="images/youtube.svg" alt="youtube-logo" />
