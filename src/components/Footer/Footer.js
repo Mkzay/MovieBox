@@ -3,7 +3,7 @@ const Footer = () => {
     <footer className="flex items-center justify-center flex-col gap-9 mb-16">
       <section className="flex items-center gap-5 md:gap-12">
         <a href="#">
-          <img src="images/facebook.svg" alt="facebook-logo" />
+          <img src="images/instagram.svg" alt="facebook-logo" />
         </a>
         <a href="#">
           <img src="images/instagram.svg" alt="instagram-logo" />
