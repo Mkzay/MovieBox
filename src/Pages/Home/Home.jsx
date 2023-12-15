@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import Nav from "../../components/Header/Navbar";
 import Main from "./Main";
-import Featured from "./featured";
+import Body from "./featured";
 import Footer from "../../components/Footer/Footer";
 
 const Home = ({ movieItems }) => {
@@ -11,7 +11,7 @@ const Home = ({ movieItems }) => {
         <Nav />
         <Main />
       </section>
-      <Featured movieItems={movieItems} />
+      <Body movieItems={movieItems} />
       <Footer />
     </div>
   );

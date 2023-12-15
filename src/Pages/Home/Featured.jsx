@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 
-const Featured = ({ movieItems }) => {
+const Body = ({ movieItems }) => {
   const [heart, setHeart] = useState(true);
   const [displayedMovies, setDisplayedMovies] = useState(8); // Initially display 6 movies
 
@@ -79,4 +79,4 @@ const Featured = ({ movieItems }) => {
   );
 };
 
-export default Featured;
+export default Body;
