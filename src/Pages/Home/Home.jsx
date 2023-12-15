@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import Nav from "../../components/Header/Navbar";
 import Main from "./Main";
-import Body from "./featured";
+import Body from "./Body";
 import Footer from "../../components/Footer/Footer";
 
 const Home = ({ movieItems }) => {
