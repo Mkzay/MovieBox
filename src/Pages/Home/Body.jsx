@@ -33,8 +33,8 @@ const Body = ({ movieItems }) => {
             title,
             poster_path,
             vote_average,
+            vote_count,
             release_date,
-            // Include other necessary fields from your API response
           } = movieItem;
 
           const imageUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
@@ -60,16 +60,22 @@ const Body = ({ movieItems }) => {
                   alt={title}
                   className="rounded-2xl w-full"
                 />
-                <h2 className="text-gray-900 text-lg/normal font-bold">
-                  {title}
-                </h2>
-                <div className="flex items-center gap-2">
-                  <img src="images/imdb.png" alt="imdb-logo" />
-                  <p className="text-xs/3 font-normal">{vote_average}</p>
-                </div>
                 <p className="text-gray-400 text-xs/normal font-bold">
                   {releaseYear}
                 </p>
+                <h2 className="text-gray-900 text-lg/normal font-bold">
+                  {title}
+                </h2>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <img src="images/imdb.png" alt="imdb-logo" />
+                    <p className="text-xs/3 font-normal">{vote_average} / 10</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <img src="images/tomato.png" alt="rottenTomato-logo" />
+                    <p className="text-xs/3 font-normal">{vote_count}</p>
+                  </div>
+                </div>
               </div>
             </article>
           );
