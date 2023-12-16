@@ -1,26 +1,25 @@
 import Nav from "../../components/Header/Navbar";
-import Main from "./Main";
 import Body from "./Body";
 import Footer from "../../components/Footer/Footer";
 import DemoCarousel from "./Carousel";
 import { useState, useEffect } from "react";
 
 const Home = () => {
-  const [movieItems, setMovieItems] = useState([]);
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     fetch(
-      "https://api.themoviedb.org/3/movie/popular?api_key=1218ed0aec5ef5e169ede8abbe7ace3d&language=en-US"
+      "https://api.themoviedb.org/3/trending/all/day?api_key=1218ed0aec5ef5e169ede8abbe7ace3d&language=en-US"
     )
       .then((res) => res.json())
-      .then((data) => setMovieItems(data.results));
+      .then((data) => setMovies(data.results));
   }, []);
 
   return (
     <div>
       <Nav />
-      <DemoCarousel movieItems={movieItems} />
-      <Body movieItems={movieItems} />
+      <DemoCarousel movies={movies} />
+      <Body movies={movies} />
       <Footer />
     </div>
   );

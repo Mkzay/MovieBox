@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 
-const Body = ({ movieItems }) => {
+const Body = ({ movies }) => {
   const [heart, setHeart] = useState(true);
   const [displayedMovies, setDisplayedMovies] = useState(8); // Initially display 6 movies
 
@@ -27,7 +27,7 @@ const Body = ({ movieItems }) => {
         </button>
       </section>
       <section className="flex items-center justify-center flex-wrap gap-14">
-        {movieItems.slice(0, displayedMovies).map((movieItem) => {
+        {movies.slice(0, displayedMovies).map((movie) => {
           const {
             id,
             title,
@@ -35,7 +35,7 @@ const Body = ({ movieItems }) => {
             vote_average,
             vote_count,
             release_date,
-          } = movieItem;
+          } = movie;
 
           const imageUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
           const releaseYear = release_date ? release_date.slice(0, 4) : "";

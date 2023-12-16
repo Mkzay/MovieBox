@@ -1,7 +1,7 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 
-const DemoCarousel = ({ movieItems }) => {
+const DemoCarousel = ({ movies }) => {
   return (
     <Carousel
       showThumbs={false}
@@ -11,15 +11,15 @@ const DemoCarousel = ({ movieItems }) => {
       showStatus={false}
       showArrows={false}
     >
-      {movieItems.map((movieItem) => {
+      {movies.map((movie) => {
         const { id, title, poster_path, vote_average, vote_count, overview } =
-          movieItem;
+          movie;
 
         const imageUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
 
         return (
           <article key={id} className="relative">
-            <img className="h-[37.5rem] w-[90rem]" src={imageUrl} alt={title} />
+            <img className="h-[40rem]" src={imageUrl} alt={title} />
             <section className="flex flex-col items-center justify-center px-2 md:items-start md:justify-start gap-5 md:gap-4 text-white absolute top-52 md:top-44 md:left-20">
               <h1 className="text-4xl md:text-5xl/[56px] font-bold md:w-[25.25rem] md:text-left">
                 {title}
@@ -42,8 +42,11 @@ const DemoCarousel = ({ movieItems }) => {
                 {overview}
               </p>
               <div className="pt-20">
-                <button className="bg-rose-700 rounded-md py[6px] px-4 flex items-center justify-center gap-2 h-9 text-sm/6 font-700">
-                  WATCH TRAILER
+                <button className="bg-rose-700 rounded-md py[6px] px-4 flex items-center justify-center gap-2 h-9 ">
+                  <div>
+                    <img src="images/play.svg" />
+                  </div>
+                  <div className="text-sm/6 font-700">WATCH TRAILER</div>
                 </button>
               </div>
             </section>
