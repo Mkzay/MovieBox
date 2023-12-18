@@ -1,18 +1,25 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Nav = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+
   const toggleMenu = () => {
     setIsSideBarOpen(!isSideBarOpen);
   };
 
+  const activeLink = "text-rose-600";
+
   return (
-    <div className="flex items-center justify-between py-7 px-2 md:py-10 md:px-14 lg:px-20 absolute top-0 z-50 w-full">
+    <div className="flex items-center justify-between py-5 px-2 md:py-5 md:px-14 lg:px-20 fixed bg-gray-700 top-0 z-50 w-full">
       <Link to="/">
         <div className="flex items-center gap-2 md:gap-6">
           <img className="hidden md:block" src="images/tv.png" alt="tv-logo" />
-          <img className="md:hidden w-14 h-[2.8rem]" src="images/tv1.png" alt="tv-logo" />
+          <img
+            className="md:hidden w-14 h-[2.8rem]"
+            src="images/tv1.png"
+            alt="tv-logo"
+          />
           <h2 className="text-white text-2xl/[1.5rem] hidden font-bold lg:block">
             MovieBox
           </h2>
@@ -38,8 +45,8 @@ const Nav = () => {
         <section
           className={`flex flex-col items-center justify-center gap-20 bg-white p-12 pl-5 border border-gray-500 rounded-r-[2.8125rem] h-[38rem] z-10 absolute top-0 left-0 md:p-10 md:gap-24 ${
             isSideBarOpen
-              ? "translate-x-0 duration-1000 ease-in delay-75 scale 75 shadow-lg shadow-gray-500"
-              : "-translate-x-[100%] duration-1000 ease-out delay-100 scale-50"
+              ? "translate-x-0  duration-300 ease-in shadow-lg shadow-gray-500"
+              : "-translate-x-[100%] duration-500 ease-out"
           }`}
         >
           <div className="flex items-center gap-2 md:gap-6">
@@ -47,10 +54,30 @@ const Nav = () => {
             <h2 className="text-2xl/6 font-bold">MovieBox</h2>
           </div>
           <ul className="flex flex-col gap-14 text-xl/normal font-semibold text-gray-500 md:gap-16">
-            <Link to="/">Home</Link>
-            <Link to="/Movies">Movies</Link>
-            <Link to="/TvSeries">TV Series</Link>
-            <Link to="/Upcoming">Upcoming</Link>
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? activeLink : "")}
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/Movies"
+              className={({ isActive }) => (isActive ? activeLink : "")}
+            >
+              Movies
+            </NavLink>
+            <NavLink
+              to="/TvSeries"
+              className={({ isActive }) => (isActive ? activeLink : "")}
+            >
+              TV Series
+            </NavLink>
+            <NavLink
+              to="/Upcoming"
+              className={({ isActive }) => (isActive ? activeLink : "")}
+            >
+              Upcoming
+            </NavLink>
           </ul>
         </section>
       </div>

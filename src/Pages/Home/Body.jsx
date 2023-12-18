@@ -1,9 +1,19 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const Body = ({ movies }) => {
+const Body = () => {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    fetch(
+      "https://api.themoviedb.org/3/trending/all/week?api_key=1218ed0aec5ef5e169ede8abbe7ace3d&language=en-US"
+    )
+      .then((res) => res.json())
+      .then((data) => setMovies(data.results));
+  }, []);
+
   const [heart, setHeart] = useState(true);
-  const [displayedMovies, setDisplayedMovies] = useState(8); // Initially display 6 movies
+  const [displayedMovies, setDisplayedMovies] = useState(30); // Initially display 6 movies
 
   const loadMoreMovies = () => {
     setDisplayedMovies(displayedMovies + 8);
@@ -16,7 +26,7 @@ const Body = ({ movies }) => {
     <main className="flex items-center justify-center flex-col py-5 px-2 mb-10 md:mb-20 md:py-10 md:px-20">
       <section className="flex items-center justify-between w-full">
         <h2 className="text-xl md:text-4xl/normal font-bold">
-          Featured Movies
+          Featured Titles
         </h2>
         <button
           onClick={loadMoreMovies}
@@ -31,14 +41,15 @@ const Body = ({ movies }) => {
           const {
             id,
             title,
+            name,
             poster_path,
             vote_average,
             vote_count,
             release_date,
+            first_air_date,
           } = movie;
 
           const imageUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
-          const releaseYear = release_date ? release_date.slice(0, 4) : "";
 
           return (
             <article key={id}>
@@ -61,10 +72,10 @@ const Body = ({ movies }) => {
                   className="rounded-2xl w-full"
                 />
                 <p className="text-gray-400 text-xs/normal font-bold">
-                  {releaseYear}
+                  {release_date} {first_air_date}
                 </p>
                 <h2 className="text-gray-900 text-lg/normal font-bold">
-                  {title}
+                  {title} {name}
                 </h2>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">

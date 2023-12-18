@@ -6,22 +6,33 @@ const DemoCarousel = ({ movies }) => {
     <Carousel
       showThumbs={false}
       autoPlay={true}
-      transitionTime={3}
+      transitionTime={1000}
       infiniteLoop={true}
       showStatus={false}
-      showArrows={false}
+      showArrows={true}
+      swipeable
+      emulateTouch
     >
       {movies.map((movie) => {
-        const { id, title, poster_path, vote_average, vote_count, overview } =
-          movie;
+        const {
+          id,
+          title,
+          name,
+          poster_path,
+          backdrop_path,
+          vote_average,
+          vote_count,
+          overview,
+        } = movie;
 
-        const imageUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
+        const imageUrl = `https://image.tmdb.org/t/p/w500${backdrop_path}`;
 
         return (
-          <article key={id} className="relative">
+          <article key={id} className="relative pt-20">
             <img className="h-[40rem]" src={imageUrl} alt={title} />
             <section className="flex flex-col items-center justify-center px-2 md:items-start md:justify-start gap-5 md:gap-4 text-white absolute top-52 md:top-44 md:left-20">
               <h1 className="text-4xl md:text-5xl/[56px] font-bold md:w-[25.25rem] md:text-left">
+                {name}
                 {title}
               </h1>
               <div className="flex items-center justify-center md:justify-start w-full gap-24">

@@ -4,10 +4,15 @@ import Footer from "../../components/Footer/Footer";
 
 const TvSeries = () => {
   const [tvShowItems, setTvShowItems] = useState([]);
+  const [heart, setHeart] = useState(true);
+
+  const onHeart = () => {
+    setHeart(!heart);
+  };
 
   useEffect(() => {
     fetch(
-      "https://api.themoviedb.org/3/trending/tv/day?api_key=1218ed0aec5ef5e169ede8abbe7ace3d&language=en-US"
+      "https://api.themoviedb.org/3/tv/top_rated?api_key=1218ed0aec5ef5e169ede8abbe7ace3d&language=en-US"
     )
       .then((res) => res.json())
       .then((data) => setTvShowItems(data.results));
@@ -16,15 +21,56 @@ const TvSeries = () => {
   return (
     <div>
       <Nav />
-      {tvShowItems.map((tvShow) => {
-        const { id, name, overview } = tvShow;
-        return (
-          <div key={id}>
-            <p>{name}</p>
-            <p>{overview}</p>
-          </div>
-        );
-      })}
+      <section className="flex items-center justify-center flex-wrap gap-10 pt-24 pb-20 md:pt-[5.8rem]">
+        {tvShowItems.map((tvShow) => {
+          const {
+            id,
+            name,
+            poster_path,
+            vote_average,
+            vote_count,
+            first_air_date,
+          } = tvShow;
+
+          const imageUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
+
+          return (
+            <article key={id} className="flex items-center justify-center">
+              <section className="flex  flex-col w-11/12 md:w-56 gap-3 h-[35rem] md:h-[29rem] ">
+                <div className="flex items-center justify-between relative top-14 px-4">
+                  <button
+                    onClick={onHeart}
+                    className="flex items-center justify-center rounded-full w-[1.875rem] h-[1.82569rem] bg-[#F3F4F680] backdrop-blur-[1px]"
+                  >
+                    {heart ? (
+                      <img src="images/heart.svg" alt="gray-heart-logo" />
+                    ) : (
+                      <img src="images/tomato.png" alt="red-heart-logo" />
+                    )}
+                  </button>
+                </div>
+                <img src={imageUrl} alt={name} className="rounded-2xl w-full" />
+                <p className="text-gray-400 text-xs/normal font-bold">
+                  {first_air_date}
+                </p>
+                <h2 className="text-gray-900 text-lg/normal font-bold">
+                  {name}
+                </h2>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <img src="images/imdb.png" alt="imdb-logo" />
+                    <p className="text-xs/3 font-normal">{vote_average} / 10</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <img src="images/tomato.png" alt="rottenTomato-logo" />
+                    <p className="text-xs/3 font-normal">{vote_count}</p>
+                  </div>
+                </div>
+              </section>
+            </article>
+          );
+        })}
+      </section>
       <Footer />
     </div>
   );
