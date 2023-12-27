@@ -14,7 +14,7 @@ const SearchResultsPage = () => {
           searchResults.map((result) => (
             <div
               key={result.id}
-              className="flex flex-col w-11/12 md:w-56 gap-3 h-[35rem] md:h-[29rem]"
+              className="flex flex-col w-11/12 md:w-56 gap-3 h-[40rem] md:h-[29rem]"
             >
               <img
                 className="rounded-2xl w-full"
