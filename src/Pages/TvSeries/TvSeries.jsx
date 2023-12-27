@@ -53,7 +53,7 @@ const TvSeries = () => {
           return (
             <article key={id} className="flex items-center justify-center">
               <section
-                className="flex  flex-col w-11/12 md:w-56 gap-3 h-[40rem] md:h-[29rem]"
+                className="flex  flex-col w-11/12 md:w-56 gap-3 h-[45rem] md:h-[29rem]"
                 onDoubleClick={() => onShow(id)}
               >
                 <div className="flex items-center justify-between relative top-14 px-4">
