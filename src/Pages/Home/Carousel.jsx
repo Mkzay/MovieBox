@@ -19,18 +19,19 @@ const DemoCarousel = ({ movies }) => {
           title,
           name,
           poster_path,
-          backdrop_path,
           vote_average,
           vote_count,
           overview,
         } = movie;
 
-        const imageUrl = `https://image.tmdb.org/t/p/w500${backdrop_path}`;
-
         return (
           <article key={id} className="relative pt-20">
-            <img className="h-[40rem]" src={imageUrl} alt={title} />
-            <section className="flex flex-col items-center justify-center px-2 md:items-start md:justify-start gap-5 md:gap-4 text-white absolute top-52 md:top-44 md:left-20">
+            <img
+              className=" h-[46rem]"
+              src={`https://image.tmdb.org/t/p/original${poster_path}`}
+              alt={title}
+            />
+            <section className="flex flex-col items-center justify-center px-2 md:items-start md:justify-start gap-5 md:gap-4 text-white absolute top-64 md:top-56 md:left-20">
               <h1 className="text-4xl md:text-5xl/[56px] font-bold md:w-[25.25rem] md:text-left">
                 {name}
                 {title}
@@ -50,7 +51,7 @@ const DemoCarousel = ({ movies }) => {
                 </div>
               </div>
               <p className="text-base/6 md:text-sm/[20px] md:text-left font-medium md:w-[20.875rem] h-[4.5rem]">
-                {overview}
+                {movie ? overview.slice(0, 350) + "..." : ""}
               </p>
               <div className="pt-20">
                 <button className="bg-rose-700 rounded-md py[6px] px-4 flex items-center justify-center gap-2 h-9 ">

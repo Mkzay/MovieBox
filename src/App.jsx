@@ -3,6 +3,7 @@ import Home from "./Pages/Home/Home";
 import Movies from "./Pages/Movies/Movies";
 import TvSeries from "./Pages/TvSeries/TvSeries";
 import Upcoming from "./Pages/Upcoming/Upcoming";
+import SearchResultsPage from "./Pages/Result/SearchResultsPage";
 
 export default function App() {
   return (
@@ -13,6 +14,11 @@ export default function App() {
           <Route exact path="/Movies" element={<Movies />} />
           <Route exact path="/TvSeries" element={<TvSeries />} />
           <Route exact path="/Upcoming" element={<Upcoming />} />
+          <Route
+            exact
+            path="/SearchResultsPage"
+            element={<SearchResultsPage />}
+          />
         </Routes>
       </Router>
     </div>

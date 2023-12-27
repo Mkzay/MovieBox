@@ -4,19 +4,34 @@ import Footer from "../../components/Footer/Footer";
 
 const TvSeries = () => {
   const [tvShowItems, setTvShowItems] = useState([]);
-  const [heart, setHeart] = useState(true);
-
-  const onHeart = () => {
-    setHeart(!heart);
-  };
+  const [selectedHeart, setSelectedHeart] = useState({});
+  const [expandedShowId, setExpandedShowId] = useState(null);
 
   useEffect(() => {
+    const storedHeart = JSON.parse(localStorage.getItem("selectedTvHeart"));
+    if (storedHeart) {
+      setSelectedHeart(storedHeart);
+    }
     fetch(
       "https://api.themoviedb.org/3/tv/top_rated?api_key=1218ed0aec5ef5e169ede8abbe7ace3d&language=en-US"
     )
       .then((res) => res.json())
       .then((data) => setTvShowItems(data.results));
   }, []);
+
+  const onHeart = (id) => {
+    const updatedSelectedHeart = { ...selectedHeart };
+    updatedSelectedHeart[id] = !updatedSelectedHeart[id];
+    setSelectedHeart(updatedSelectedHeart);
+    localStorage.setItem(
+      "selectedTvHeart",
+      JSON.stringify(updatedSelectedHeart)
+    );
+  };
+
+  const onShow = (id) => {
+    setExpandedShowId(expandedShowId === id ? null : id);
+  };
 
   return (
     <div>
@@ -26,6 +41,7 @@ const TvSeries = () => {
           const {
             id,
             name,
+            overview,
             poster_path,
             vote_average,
             vote_count,
@@ -36,20 +52,28 @@ const TvSeries = () => {
 
           return (
             <article key={id} className="flex items-center justify-center">
-              <section className="flex  flex-col w-11/12 md:w-56 gap-3 h-[35rem] md:h-[29rem] ">
+              <section
+                className="flex  flex-col w-11/12 md:w-56 gap-3 h-[35rem] md:h-[29rem]"
+                onDoubleClick={() => onShow(id)}
+              >
                 <div className="flex items-center justify-between relative top-14 px-4">
                   <button
-                    onClick={onHeart}
+                    onClick={() => onHeart(id)}
                     className="flex items-center justify-center rounded-full w-[1.875rem] h-[1.82569rem] bg-[#F3F4F680] backdrop-blur-[1px]"
                   >
-                    {heart ? (
-                      <img src="images/heart.svg" alt="gray-heart-logo" />
-                    ) : (
+                    {selectedHeart[id] ? (
                       <img src="images/tomato.png" alt="red-heart-logo" />
+                    ) : (
+                      <img src="images/heart.svg" alt="gray-heart-logo" />
                     )}
                   </button>
                 </div>
                 <img src={imageUrl} alt={name} className="rounded-2xl w-full" />
+                <div className="relative">
+                  <p className="text-xs text-white text-center font-bold absolute -top-44 p-2 ">
+                    {expandedShowId === id ? overview.slice(0, 250) : ""}
+                  </p>
+                </div>
                 <p className="text-gray-400 text-xs/normal font-bold">
                   {first_air_date}
                 </p>
